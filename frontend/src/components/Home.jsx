@@ -3,6 +3,20 @@ import { useHistory } from "react-router";
 import { addToCart } from "../slices/cartSlice";
 import { useGetAllProductsQuery } from "../slices/productsApi";
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
+      }
+    />
+  );
+};
 
 
 const Home = () => {

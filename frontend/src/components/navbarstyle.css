@@ -1,0 +1,17 @@
+.home_cart {
+    height: 70px;
+    width: 300px;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+p {
+    display: flex;
+}
+
+nav-bag {
+    display: flex;
+    align-items: center;
+}
