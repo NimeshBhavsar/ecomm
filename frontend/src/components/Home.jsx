@@ -33,6 +33,13 @@ const Home = () => {
     setShowPopup(false);
   };
 
+  const handleCloseClick = (event) => {
+    // Close the popup only if the click is outside the popup content
+    if (event.target.classList.contains('popup')) {
+      closePopup();
+    }
+  };
+
 
 
   return (
