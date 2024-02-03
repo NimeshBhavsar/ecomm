@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { addToCart } from "../slices/cartSlice";
 import { useGetAllProductsQuery } from "../slices/productsApi";
+import React, { useState } from 'react';
 
 
 const Home = () => {
@@ -17,19 +18,37 @@ const Home = () => {
     history.push("/cart");
   };
 
+
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const openPopup = (selectedProduct) => {
+    setSelectedProduct(selectedProduct);
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setSelectedProduct(null);
+    setShowPopup(false);
+  };
+
+
+
   return (
     <div className="home-container">
       {status === "success" ? (
         <>
           <h2>New Arrivals</h2>
           <div className="products">
+
             {data &&
               data?.map((product) => (
                 <div key={product.id} className="product">
                   <div className="titlediv">
                     <h3>{product.title}</h3>
                   </div>
-                  <img src={product.image} alt={product.name} />
+                  <img src={product.image} alt={product.name} onClick={() => openPopup(product)} />
                   <div className="details">
                     <img src={imagePath} alt="4star" className="ratingstar" />
                     {/* <span>{product.desc}</span> */}
@@ -38,6 +57,26 @@ const Home = () => {
                   <button onClick={() => handleAddToCart(product)}>
                     Add To Cart
                   </button>
+
+                  {showPopup && selectedProduct && selectedProduct.id === product.id && (
+                    <div className="popup" onClick={handleCloseClick}>
+                      <div className="popup-content">
+                        <span className="close" onClick={closePopup}>&times;</span>
+                        <h2>{selectedProduct.title}</h2>
+                        <img src={selectedProduct.image} alt={selectedProduct.name} />
+                        {/* Display other product details like description, rating, price, etc. */}
+                        <span>Description: {selectedProduct.description}</span>
+                        <span>Rating: {selectedProduct.rating}</span>
+                        <span>Price: ₹{selectedProduct.amount}</span>
+                        {/* Add to Cart button or any other actions */}
+                        <button onClick={() => handleAddToCart(selectedProduct)}>
+                          Add To Cart
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+
                 </div>
               ))}
           </div>
@@ -50,5 +89,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;
