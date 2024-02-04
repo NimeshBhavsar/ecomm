@@ -49,6 +49,11 @@ Follow these steps to set up and run the application locally:
    cd ./frontend
    npm start
    ```
+   incase of an error try using this command:
+   ```bash
+   $env:NODE_OPTIONS = "--openssl-legacy-provider"
+   ```
+   
 
 5. Open your browser and navigate to `http://localhost:3000` to use the application.
 
