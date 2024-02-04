@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -13,6 +14,33 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  const [orderPlaced, setOrderPlaced] = useState(false); // New state for order placement
+  const handleCheckout = () => {
+    // Perform any necessary actions for checkout
+    // For example, you can send an order to the server here
+    // Show the order placed popup
+
+    console.log("Ordered Items:", cart.cartItems);
+    console.log("Total Price:", cart.cartTotalAmount);
+    toast.info("Order Placed Successfully", {
+      position: "bottom-left",
+    });
+    setOrderPlaced(true);
+    // Automatically close the popup and clear the cart after 4 seconds
+    setTimeout(() => {
+      setOrderPlaced(false);
+      dispatch(clearCart());
+    }, 5000);
+    // Can also perform any other actions related to order placement here
+  };
+  const handlePopupClose = () => {
+    // Close the popup
+
+    dispatch(clearCart());
+    setOrderPlaced(false);
+  };
+
 
   useEffect(() => {
     dispatch(getTotals());
@@ -101,7 +129,8 @@ const Cart = () => {
                 <span className="amount">₹{cart.cartTotalAmount}</span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
-              <button>Check out</button>
+              {!orderPlaced && (
+                <button onClick={handleCheckout}>Check out</button>)}
               <div className="continue-shopping">
                 <Link to="/">
                   <svg
@@ -121,8 +150,16 @@ const Cart = () => {
                 </Link>
               </div>
             </div>
+
           </div>
+          {orderPlaced && (
+            <div className="order-placed-popup">
+              <p>Your order has been placed successfully!</p>
+              <button onClick={handlePopupClose}>Close</button>
+            </div>
+          )}
         </div>
+
       )}
     </div>
   );

@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import './navbarstyle.css'
+import { logout } from '../slices/authSlice';
 const NavBar = () => {
   const { cartTotalQuantity } = useSelector((state) => state.cart);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+  const handleSignOut = () => {
+    // Dispatch the logout action to update the authentication status
+    dispatch(logout());
+  };
+
   return (
     <nav className="nav-bar">
       <Link to="/">
@@ -30,6 +37,9 @@ const NavBar = () => {
             <span className="bag-quantity">
               <span>{cartTotalQuantity}</span>
             </span>
+            <Link to="/">
+              <button className="sign-out-button" onClick={handleSignOut} >Sign Out</button>
+            </Link>
           </div>
         </Link>
       )}
