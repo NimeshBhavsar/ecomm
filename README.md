@@ -2,6 +2,10 @@
 
 This project is a basic implementation of an eCommerce application using React and the latest version of `v18` along with `react-router-dom v6`. The goal is to create a simple, well-designed, well-commented, and tested codebase.
 
+## Youtube Video Link
+⬇️⬇️click to view the video⬇️⬇️
+[![Watch the video](https://img.youtube.com/vi/FuJxDyHbFqY/maxresdefault.jpg)](https://www.youtube.com/embed/FuJxDyHbFqY)
+
 ## Functionalities
 
 1. **User Authentication:**
@@ -23,7 +27,7 @@ Follow these steps to set up and run the application locally:
 1. Clone the repository:
    ```bash
    git clone https://github.com/NimeshBhavsar/ecomm.git
-   cd ecomm
+   cd eco
    ```
 
 2. Install dependencies:
@@ -49,6 +53,11 @@ Follow these steps to set up and run the application locally:
    cd ./frontend
    npm start
    ```
+   incase of an error try using this command:
+   ```bash
+   $env:NODE_OPTIONS = "--openssl-legacy-provider"
+   ```
+   
 
 5. Open your browser and navigate to `http://localhost:3000` to use the application.
 
