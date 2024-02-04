@@ -2,6 +2,10 @@
 
 This project is a basic implementation of an eCommerce application using React and the latest version of `v18` along with `react-router-dom v6`. The goal is to create a simple, well-designed, well-commented, and tested codebase.
 
+## Youtube Video Link
+
+[![Watch the video](https://img.youtube.com/vi/FuJxDyHbFqY/maxresdefault.jpg)](https://www.youtube.com/embed/FuJxDyHbFqY)
+
 ## Functionalities
 
 1. **User Authentication:**
