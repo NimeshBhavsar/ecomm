@@ -4,7 +4,7 @@ This project is a basic implementation of an eCommerce application using React a
 
 ## Youtube Video Link
 ⬇️⬇️click to view the video⬇️⬇️
-[![Watch the video](https://img.youtube.com/vi/FuJxDyHbFqY/maxresdefault.jpg)](https://www.youtube.com/embed/FuJxDyHbFqY)
+[![Watch the video](https://img.youtube.com/vi/FuJxDyHbFqY/maxresdefault.jpg)](https://www.youtube.com/embed/niA_G032HqA)
 
 ## Functionalities
 
